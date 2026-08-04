@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-pacifico: "Pacifico", cursive;
+  --font-poppins: "Poppins", sans-serif;
+}
+
+.feature{
+  font-weight: bold;
+}
+
+.section-divider{
+    width: 70%;
+    margin: auto;
+    margin-top: 15rem;
+    border: none;
+    border-top: 10px solid black;
+    border-radius: 20px;
+}
+p{
+  font-family: Poppins;
+}
+
+.description{
+  max-width: 300px;
+  text-align: justify;
+}
+
+.vinyl {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: repeating-radial-gradient(
+        circle,
+        #1f1f1f 0px,
+        #1f1f1f 6px,
+        #2b2b2b 7px,
+        #2b2b2b 10px
+    );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+
+    animation: spin 8s linear infinite;
+
+    box-shadow: 0 0 25px rgba(0,0,0,.5);
+}
+
+.vinyl::before{
+    content:"";
+    position:absolute;
+    width:80px;
+    height:250px;
+    background:rgba(255,255,255,.12);
+    transform:rotate(35deg);
+    top:-30px;
+    left:40px;
+    filter:blur(12px);
+}
+
+.vinyl-center{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #1DB954;
+}
+
+@keyframes spin{
+    from{
+        transform: rotate(0deg);
+    }
+
+    to{
+        transform: rotate(360deg);
+    }
+}
