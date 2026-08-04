@@ -79,3 +79,12 @@ p{
         transform: rotate(360deg);
     }
 }
+
+.spotify-logo {
+  border-radius: 20px;
+}
+
+.spotify-logo img{
+  width: 40px;
+  height: 40px;
+}

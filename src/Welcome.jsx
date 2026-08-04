@@ -49,6 +49,9 @@ export const Welcome = () => {
           </div>
         </div>
       </div>
+      <div className="flex justify-center items-center">
+        <button type="button" className="flex justify-center items-center gap-5 spotify-logo bg-gray-950 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"><img src={spotifyLogo} alt="Spotify Logo" />Login with Spotify</button>
+      </div>
     </>
   );
 };
