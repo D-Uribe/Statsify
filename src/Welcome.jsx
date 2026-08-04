@@ -3,7 +3,9 @@ import "./styles/styles.css";
 import musicPlayer from "./assets/music-player.png";
 import headphones from "./assets/headphones.png";
 import graph from "./assets/graph.png";
-import spotifyLogo from "./assets/spotify.webp"
+import spotifyLogo from "./assets/spotify.webp";
+import github from "./assets/github.png";
+import linkedin from "./assets/linkedin.png";
 import Icon from "./components/Icon";
 
 export const Welcome = () => {
@@ -49,9 +51,28 @@ export const Welcome = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center items-center">
-        <button type="button" className="flex justify-center items-center gap-5 spotify-logo bg-gray-950 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"><img src={spotifyLogo} alt="Spotify Logo" />Login with Spotify</button>
+      <div className="flex justify-center items-center mt-10">
+        <button
+          type="button"
+          className="flex justify-center items-center gap-5 spotify-logo bg-gray-950 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
+        >
+          <img src={spotifyLogo} alt="Spotify Logo" />
+          Login with Spotify
+        </button>
       </div>
+      <footer className="footer  bg-green-400 flex justify-center items-center flex-col mt-3 gap-5">
+        <p>© 2026 Statsify</p>
+
+        <p className="text-center">
+          Built with React, Tailwind CSS & Spotify Web API
+          <br />
+          by Diego Uribe
+        </p>
+        <div className="flex justify-center items-center gap-5 mb-5">
+          <img src={github} />
+          <img src={linkedin} />
+        </div>
+      </footer>
     </>
   );
 };
