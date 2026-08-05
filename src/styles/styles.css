@@ -7,6 +7,7 @@
   --font-poppins: "Poppins", sans-serif;
 }
 
+
 .feature{
   font-weight: bold;
 }
@@ -18,13 +19,14 @@
     border: none;
     border-top: 10px solid black;
     border-radius: 20px;
+    border-color: #616161;
 }
 p{
   font-family: Poppins;
 }
 
 .description{
-  max-width: 300px;
+  max-width: 340px;
   text-align: justify;
 }
 
