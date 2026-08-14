@@ -8,6 +8,11 @@
 }
 
 
+.animated-bg{
+  
+}
+
+
 .feature{
   font-weight: bold;
 }
@@ -21,12 +26,13 @@
     border-radius: 20px;
     border-color: #616161;
 }
-p{
+p, li{
   font-family: Poppins;
 }
 
 .description{
-  max-width: 340px;
+  font-size: 2rem;
+  max-width: 700px;
   text-align: justify;
 }
 
