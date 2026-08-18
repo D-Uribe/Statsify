@@ -11,6 +11,9 @@ import Icon from "./components/Icon";
 import Socials from "./components/Socials";
 import statsifylogo from "./assets/bar-chart.png";
 import { motion } from "motion/react";
+import { loginWithSpotify } from "./utils/spotifyAuth";
+import Callback from "./Callback";
+
 
 const container = {
   hidden: {},
@@ -25,6 +28,10 @@ const item = {
   hidden: { opacity: 0, y: 50 },
   show: { opacity: 1, y: 0 },
 };
+
+
+
+
 
 export const Welcome = () => {
   return (
@@ -94,6 +101,7 @@ export const Welcome = () => {
         <button
           type="button"
           className="flex justify-center items-center gap-5 spotify-logo bg-gray-950 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
+          onClick={loginWithSpotify}
         >
           <img src={spotifyLogo} alt="Spotify Logo" />
           Login with Spotify
