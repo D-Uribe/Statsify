@@ -1,10 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+
 
 const getToken = async (code) => {
   const codeVerifier = localStorage.getItem("code_verifier");
 
   const clientId = "b4d80e95de2b46fda1930bd70b1c484e";
   const redirectUri = "http://127.0.0.1:5173/callback";
+
+  const [Content, setContent] = useState(null)
 
   const body = new URLSearchParams({
     client_id: clientId,
@@ -29,7 +33,7 @@ const getToken = async (code) => {
     return null
   }
   localStorage.setItem("access_token", data.access_token);
-  console.log("TOKEN RESPONSE:", data);
+  //console.log("TOKEN RESPONSE:", data);
 
   return data.access_token;
 };
@@ -42,9 +46,8 @@ const getProfile = async (accessToken) => {
   });
 
   const data = await response.json();
-  console.log("ACCESS TOKEN:", accessToken);
-
-  console.log(data);
+  //console.log("ACCESS TOKEN:", accessToken);
+  return data;
 };
 
 const Callback = () => {
@@ -55,12 +58,16 @@ const Callback = () => {
     if (code) {
       const getData = async () => {
         const accessToken = await getToken(code);
-        if(accessToken)
-        await getProfile(accessToken);
+        if(accessToken){
+            const profile = await getProfile(accessToken);
+            setContent(profile)
+        }
+        
       };
       getData();
     }
   }, [code]);
+
 
   return (
     <div>
