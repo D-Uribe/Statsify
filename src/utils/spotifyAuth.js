@@ -36,7 +36,7 @@ export const loginWithSpotify = async () => {
         client_id: clientId,
         response_type: "code",
         redirect_uri: redirectUri,
-        scope: "user-read-private user-read-email",
+        scope: "user-read-private user-read-email user-top-read",
         code_challenge_method: "S256",
         code_challenge: codeChallenge,
     });
