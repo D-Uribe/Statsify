@@ -42,7 +42,7 @@ export const Welcome = () => {
         </video>
         <div className="relative z-10">
           <div className="top-container flex justify-center items-center flex-col min-h-screen pb-40">
-            <h1 className="font-pacifico text-[12rem] mt-3">Statsify</h1>
+            <h1 className="text-[12rem] mt-3">Statsify</h1>
             <p className="mt-20 text-5xl">
               See what you've been listening to,{" "}
               <span className="font-bold">right now</span>.
