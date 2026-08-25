@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { WelcomeMsg } from "./components/WelcomeMsg";
 
 const getToken = async (code) => {
   const codeVerifier = localStorage.getItem("code_verifier");
@@ -97,6 +98,7 @@ const Callback = () => {
   }, [code]);
 
   return (
+    <>
     <div className="flex justify-between p-10 bg-black">
       <h1 className="text-6xl text-white">Statsify</h1>
       <div className="flex items-center gap-2">
@@ -104,6 +106,8 @@ const Callback = () => {
         <p className="text-white">{content?.display_name}</p>
       </div>
     </div>
+    <div><WelcomeMsg></WelcomeMsg></div>
+    </>
   );
 };
 
