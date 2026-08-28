@@ -41,6 +41,10 @@ p, li{
   text-align: justify;
 }
 
+.welcome-msg{
+  font-size: 3rem;
+}
+
 .vinyl {
     width: 220px;
     height: 220px;

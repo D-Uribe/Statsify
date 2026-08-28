@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { WelcomeMsg } from "./components/WelcomeMsg";
 
+
 const getToken = async (code) => {
   const codeVerifier = localStorage.getItem("code_verifier");
 
@@ -106,7 +107,9 @@ const Callback = () => {
         <p className="text-white">{content?.display_name}</p>
       </div>
     </div>
-    <div><WelcomeMsg></WelcomeMsg></div>
+    <div className="flex items-center justify-center mt-10">
+      <WelcomeMsg></WelcomeMsg>
+      </div>
     </>
   );
 };

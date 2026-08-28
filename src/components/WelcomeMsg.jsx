@@ -21,6 +21,6 @@ const picker = Math.floor(Math.random()* phrases.length)
 
 
   return (
-    <p>{phrases[picker]}</p>
+    <p className="welcome-msg">{phrases[picker]}</p>
   )
 }
