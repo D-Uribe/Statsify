@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { WelcomeMsg } from "./components/WelcomeMsg";
+import { TopTracks } from "./components/TopTracks";
 
 
 const getToken = async (code) => {
@@ -110,6 +111,10 @@ const Callback = () => {
     <div className="flex items-center justify-center mt-10">
       <WelcomeMsg></WelcomeMsg>
       </div>
+      <div>
+        <TopTracks tunes={songs}></TopTracks>
+      </div>
+      <div></div>
     </>
   );
 };
