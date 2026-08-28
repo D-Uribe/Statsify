@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { WelcomeMsg } from "./components/WelcomeMsg";
 import { TopTracks } from "./components/TopTracks";
+import { TopArtists } from "./components/TopArtists";
 
 
 const getToken = async (code) => {
@@ -114,7 +115,9 @@ const Callback = () => {
       <div>
         <TopTracks tunes={songs}></TopTracks>
       </div>
-      <div></div>
+      <div>
+        <TopArtists creators={artists}></TopArtists>
+      </div>
     </>
   );
 };
