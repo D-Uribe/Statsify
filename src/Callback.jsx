@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { WelcomeMsg } from "./components/WelcomeMsg";
 import { TopTracks } from "./components/TopTracks";
 import { TopArtists } from "./components/TopArtists";
+import { ArtistPresence } from "./components/ArtistPresence";
 
 
 const getToken = async (code) => {
@@ -94,6 +95,7 @@ const Callback = () => {
           setContent(profile);
           setSongs(tracks);
           setArtists(artistData);
+
         }
       };
       getData();
@@ -117,6 +119,9 @@ const Callback = () => {
       </div>
       <div>
         <TopArtists creators={artists}></TopArtists>
+      </div>
+      <div>
+        <ArtistPresence tunes={songs}></ArtistPresence>
       </div>
     </>
   );

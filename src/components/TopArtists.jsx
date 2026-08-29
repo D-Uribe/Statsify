@@ -4,7 +4,7 @@ export const TopArtists = ({ creators }) => {
     <div>
         {creators?.items.slice(0,5).map(artist =>
         <>
-        <img src={artist.images[0].url}></img>
+        <img key={artist.id} src={artist.images[0].url}></img>
         <p>{artist.name}</p>
         </>
         )}
