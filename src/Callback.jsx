@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { WelcomeMsg } from "./components/WelcomeMsg";
 import { TopTracks } from "./components/TopTracks";
 import { TopArtists } from "./components/TopArtists";
 import { ArtistPresence } from "./components/ArtistPresence";
-
+import html2canvas from "html2canvas-pro";
 
 const getToken = async (code) => {
   const codeVerifier = localStorage.getItem("code_verifier");
@@ -79,6 +79,7 @@ const getArtists = async (accessToken) => {
 const Callback = () => {
   const params = new URLSearchParams(window.location.search);
   const code = params.get("code");
+  const statsRef = useRef(null);
 
   const [content, setContent] = useState();
   const [songs, setSongs] = useState();
@@ -95,33 +96,46 @@ const Callback = () => {
           setContent(profile);
           setSongs(tracks);
           setArtists(artistData);
-
         }
       };
       getData();
     }
   }, [code]);
 
+  const handleShare = async() =>{
+    const canvas = await html2canvas(statsRef.current)
+    console.log(canvas)
+  }
+
+
   return (
     <>
-    <div className="flex justify-between p-10 bg-black">
-      <h1 className="text-6xl text-white">Statsify</h1>
-      <div className="flex items-center gap-2">
-        <img className="rounded-full w-15 h-15" src={content?.images[0].url} />
-        <p className="text-white">{content?.display_name}</p>
+      <div className="flex justify-between p-10 bg-black">
+        <h1 className="text-6xl text-white">Statsify</h1>
+        <div className="flex items-center gap-2">
+          <img
+            className="rounded-full w-15 h-15"
+            src={content?.images[0].url}
+          />
+          <p className="text-white">{content?.display_name}</p>
+        </div>
       </div>
-    </div>
-    <div className="flex items-center justify-center mt-10">
-      <WelcomeMsg></WelcomeMsg>
+      <div className="flex items-center justify-center mt-10">
+        <WelcomeMsg></WelcomeMsg>
+      </div>
+      <div ref={statsRef}>
+        <div>
+          <TopTracks tunes={songs}></TopTracks>
+        </div>
+        <div>
+          <TopArtists creators={artists}></TopArtists>
+        </div>
+        <div>
+          <ArtistPresence tunes={songs}></ArtistPresence>
+        </div>
       </div>
       <div>
-        <TopTracks tunes={songs}></TopTracks>
-      </div>
-      <div>
-        <TopArtists creators={artists}></TopArtists>
-      </div>
-      <div>
-        <ArtistPresence tunes={songs}></ArtistPresence>
+        <button onClick={handleShare}>Share</button>
       </div>
     </>
   );
