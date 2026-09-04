@@ -4,19 +4,8 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
-export const ArtistPresence = ({ tunes }) => {
-  const artistNames = tunes?.items
-    .slice(0, 10)
-    .map((song) => song.artists[0].name);
-
-  const artistFrequency = artistNames?.reduce(getMax, {});
-
-  function getMax(acc, val) {
-    acc[val] ??= 0;
-    acc[val] += 1;
-    return acc;
-  }
-
+export const ArtistPresence = ({ artistFrequency }) => {
+  
   const keys = artistFrequency ? Object.keys(artistFrequency) : [];
   const values = artistFrequency ? Object.values(artistFrequency) : [];
 
@@ -80,7 +69,7 @@ export const ArtistPresence = ({ tunes }) => {
     <div className="w-full max-w-md">
       <p>Artists appearing most frequently in your Top 10 tracks</p>
 
-      <Doughnut data={data} options={options} />
+      <Doughnut data={data} options={options}/>
     </div>
   );
 };

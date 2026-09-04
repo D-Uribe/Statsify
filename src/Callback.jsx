@@ -3,6 +3,7 @@ import { WelcomeMsg } from "./components/WelcomeMsg";
 import { TopTracks } from "./components/TopTracks";
 import { TopArtists } from "./components/TopArtists";
 import { ArtistPresence } from "./components/ArtistPresence";
+import { StatsCard } from "./components/StatsCard";
 import html2canvas from "html2canvas-pro";
 
 const getToken = async (code) => {
@@ -76,6 +77,8 @@ const getArtists = async (accessToken) => {
   return data;
 };
 
+
+
 const Callback = () => {
   const params = new URLSearchParams(window.location.search);
   const code = params.get("code");
@@ -84,6 +87,18 @@ const Callback = () => {
   const [content, setContent] = useState();
   const [songs, setSongs] = useState();
   const [artists, setArtists] = useState();
+
+  const artistNames = songs?.items
+  .slice(0, 10)
+  .map((song) => song.artists[0].name);
+
+const artistFrequency = artistNames?.reduce(countArtists, {});
+
+ function countArtists(acc, val) {
+    acc[val] ??= 0;
+    acc[val] += 1;
+    return acc;
+  }
 
   useEffect(() => {
     if (code) {
@@ -102,11 +117,10 @@ const Callback = () => {
     }
   }, [code]);
 
-  const handleShare = async() =>{
-    const canvas = await html2canvas(statsRef.current)
-    console.log(canvas)
-  }
-
+  const handleShare = async () => {
+    const canvas = await html2canvas(statsRef.current);
+    console.log(canvas);
+  };
 
   return (
     <>
@@ -131,12 +145,13 @@ const Callback = () => {
           <TopArtists creators={artists}></TopArtists>
         </div>
         <div>
-          <ArtistPresence tunes={songs}></ArtistPresence>
+          <ArtistPresence artistFrequency={artistFrequency}></ArtistPresence>
         </div>
       </div>
       <div>
         <button onClick={handleShare}>Share</button>
       </div>
+      <StatsCard info={content} tunes={songs} creators={artists} artistFrequency={artistFrequency}></StatsCard>
     </>
   );
 };

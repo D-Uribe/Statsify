@@ -1,4 +1,3 @@
-
 export const TopArtists = ({ creators }) => {
   return (
     <div>
