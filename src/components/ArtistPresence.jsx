@@ -3,7 +3,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
-
+//TODO: CAMBIAR COLORES HAY UNO PARECIDO AL NARANJA
 export const ArtistPresence = ({ artistFrequency }) => {
   
   const keys = artistFrequency ? Object.keys(artistFrequency) : [];

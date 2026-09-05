@@ -77,8 +77,6 @@ const getArtists = async (accessToken) => {
   return data;
 };
 
-
-
 const Callback = () => {
   const params = new URLSearchParams(window.location.search);
   const code = params.get("code");
@@ -89,16 +87,16 @@ const Callback = () => {
   const [artists, setArtists] = useState();
 
   const artistNames = songs?.items
-  .slice(0, 10)
-  .map((song) => song.artists[0].name);
+    .slice(0, 10)
+    .map((song) => song.artists[0].name);
 
-const artistFrequency = artistNames?.reduce(countArtists, {});
-
- function countArtists(acc, val) {
+  function countArtists(acc, val) {
     acc[val] ??= 0;
     acc[val] += 1;
     return acc;
   }
+
+  const artistFrequency = artistNames?.reduce(countArtists, {});
 
   useEffect(() => {
     if (code) {
@@ -119,7 +117,15 @@ const artistFrequency = artistNames?.reduce(countArtists, {});
 
   const handleShare = async () => {
     const canvas = await html2canvas(statsRef.current);
-    console.log(canvas);
+    const image = canvas.toDataURL("image/png");
+
+    console.log(image);
+    const link = document.createElement("a");
+
+    link.download = "statsify-stats.png";
+    link.href = image;
+
+    link.click();
   };
 
   return (
@@ -137,21 +143,27 @@ const artistFrequency = artistNames?.reduce(countArtists, {});
       <div className="flex items-center justify-center mt-10">
         <WelcomeMsg></WelcomeMsg>
       </div>
-      <div ref={statsRef}>
-        <div>
-          <TopTracks tunes={songs}></TopTracks>
-        </div>
-        <div>
-          <TopArtists creators={artists}></TopArtists>
-        </div>
-        <div>
-          <ArtistPresence artistFrequency={artistFrequency}></ArtistPresence>
-        </div>
+
+      <div>
+        <TopTracks tunes={songs}></TopTracks>
+      </div>
+      <div>
+        <TopArtists creators={artists}></TopArtists>
+      </div>
+      <div>
+        <ArtistPresence artistFrequency={artistFrequency}></ArtistPresence>
       </div>
       <div>
         <button onClick={handleShare}>Share</button>
       </div>
-      <StatsCard info={content} tunes={songs} creators={artists} artistFrequency={artistFrequency}></StatsCard>
+      <div ref={statsRef} className="w-[600px] min-h-[900px]">
+        <StatsCard
+          info={content}
+          tunes={songs}
+          creators={artists}
+          artistFrequency={artistFrequency}
+        ></StatsCard>
+      </div>
     </>
   );
 };

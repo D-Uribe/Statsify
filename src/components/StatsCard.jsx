@@ -5,26 +5,24 @@ import { ArtistPresence } from "./ArtistPresence";
 
 export const StatsCard = ({info, tunes, creators, artistFrequency}) => {
 
-//console.log(tunes?.items[0]);
-//console.log(tunes?.items?.[0])
-  //    console.log(creators?.items?.[0])
-  console.log(creators?.items[0])
   return (
     <>
+    <div className="flex flex-col items-center text-center">
       <h1>Statsify</h1>
       <p>{info?.display_name}'s Music Stats</p>
       <div>
         <p>#1 Track</p>
-        <img src={tunes?.items[0].album.images[0].url}></img>
+        <img src={tunes?.items[0].album.images[1].url} className="w-32 h-32 object-cover rounded-xl"></img>
         <p>{tunes?.items[0].artists[0].name} - {tunes?.items[0].name}</p>
       </div>
       <div>
         <p>#1 Artist</p>
-        <img src={creators?.items[0].images[0].url}></img>
+        <img src={creators?.items[0].images[1].url} className="w-28 h-28 rounded-full object-cover"></img>
         <p>{creators?.items[0].name}</p>
       </div>
-      <div>
+      <div className="w-72">
         <ArtistPresence artistFrequency={artistFrequency}></ArtistPresence>
+      </div>
       </div>
       
     
