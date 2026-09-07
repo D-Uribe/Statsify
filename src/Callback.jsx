@@ -1,10 +1,9 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { WelcomeMsg } from "./components/WelcomeMsg";
 import { TopTracks } from "./components/TopTracks";
 import { TopArtists } from "./components/TopArtists";
 import { ArtistPresence } from "./components/ArtistPresence";
-import { StatsCard } from "./components/StatsCard";
-import html2canvas from "html2canvas-pro";
+
 
 const getToken = async (code) => {
   const codeVerifier = localStorage.getItem("code_verifier");
@@ -80,7 +79,6 @@ const getArtists = async (accessToken) => {
 const Callback = () => {
   const params = new URLSearchParams(window.location.search);
   const code = params.get("code");
-  const statsRef = useRef(null);
 
   const [content, setContent] = useState();
   const [songs, setSongs] = useState();
@@ -115,18 +113,6 @@ const Callback = () => {
     }
   }, [code]);
 
-  const handleShare = async () => {
-    const canvas = await html2canvas(statsRef.current);
-    const image = canvas.toDataURL("image/png");
-
-    console.log(image);
-    const link = document.createElement("a");
-
-    link.download = "statsify-stats.png";
-    link.href = image;
-
-    link.click();
-  };
 
   return (
     <>
@@ -152,17 +138,6 @@ const Callback = () => {
       </div>
       <div>
         <ArtistPresence artistFrequency={artistFrequency}></ArtistPresence>
-      </div>
-      <div>
-        <button onClick={handleShare}>Share</button>
-      </div>
-      <div ref={statsRef} className="w-[600px] min-h-[900px]">
-        <StatsCard
-          info={content}
-          tunes={songs}
-          creators={artists}
-          artistFrequency={artistFrequency}
-        ></StatsCard>
       </div>
     </>
   );
