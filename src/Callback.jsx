@@ -3,6 +3,7 @@ import { WelcomeMsg } from "./components/WelcomeMsg";
 import { TopTracks } from "./components/TopTracks";
 import { TopArtists } from "./components/TopArtists";
 import { ArtistPresence } from "./components/ArtistPresence";
+import { Footer } from "./components/Footer";
 
 
 const getToken = async (code) => {
@@ -139,6 +140,7 @@ const Callback = () => {
       <div>
         <ArtistPresence artistFrequency={artistFrequency}></ArtistPresence>
       </div>
+      <Footer></Footer>
     </>
   );
 };
