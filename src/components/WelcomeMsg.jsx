@@ -1,3 +1,6 @@
+import { useRef } from "react";
+
+
 export const WelcomeMsg = () => {
 
 
@@ -16,11 +19,9 @@ export const WelcomeMsg = () => {
   "Your music, at a glance.",
   "Let's see what's been playing lately."
 ];
-
-const picker = Math.floor(Math.random()* phrases.length)
-
+const ref = useRef(Math.floor(Math.random()* phrases.length))
 
   return (
-    <p className="welcome-msg">{phrases[picker]}</p>
+    <p className="welcome-msg">{phrases[ref.current]}</p>
   )
 }

@@ -2,8 +2,12 @@ import statsifylogo from "../assets/bar-chart.png";
 import github from "../assets/github.png";
 import linkedin from "../assets/linkedin.png";
 import Socials from "./Socials";
+import { useNavigate } from "react-router-dom"
 
 export const Footer = () => {
+
+  const navigate = useNavigate()
+
   return (
     <>
       <footer className="footer  bg-green-100 flex justify-around items-center mt-15 p-10">
@@ -14,7 +18,7 @@ export const Footer = () => {
 
         <div>
           <ul>
-            <li>Home</li>
+            <button onClick={() => {window.scrollTo(0, 0); navigate("/")}} type="button" className="font-poppins">Home</button>
             <li>Privacy Policy</li>
           </ul>
         </div>

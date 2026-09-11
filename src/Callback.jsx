@@ -4,7 +4,7 @@ import { TopTracks } from "./components/TopTracks";
 import { TopArtists } from "./components/TopArtists";
 import { ArtistPresence } from "./components/ArtistPresence";
 import { Footer } from "./components/Footer";
-
+import { ClipLoader } from "react-spinners";
 
 const getToken = async (code) => {
   const codeVerifier = localStorage.getItem("code_verifier");
@@ -84,6 +84,7 @@ const Callback = () => {
   const [content, setContent] = useState();
   const [songs, setSongs] = useState();
   const [artists, setArtists] = useState();
+  const [spinner, setSpinner] = useState(false);
 
   const artistNames = songs?.items
     .slice(0, 10)
@@ -99,8 +100,11 @@ const Callback = () => {
 
   useEffect(() => {
     if (code) {
+      setSpinner(true);
+      const existingToken = localStorage.getItem("access_token");
+
       const getData = async () => {
-        const accessToken = await getToken(code);
+        const accessToken = existingToken || (await getToken(code));
         if (accessToken) {
           const profile = await getProfile(accessToken);
           const tracks = await getTracks(accessToken);
@@ -108,12 +112,12 @@ const Callback = () => {
           setContent(profile);
           setSongs(tracks);
           setArtists(artistData);
+          setSpinner(false);
         }
       };
       getData();
     }
   }, [code]);
-
 
   return (
     <>
@@ -127,9 +131,16 @@ const Callback = () => {
           <p className="text-white">{content?.display_name}</p>
         </div>
       </div>
-      <div className="flex items-center justify-center mt-10">
-        <WelcomeMsg></WelcomeMsg>
-      </div>
+      {spinner && (
+        <div className="flex justify-center items-center min-h-screen">
+          <ClipLoader color="#1DB954" size={50} />
+        </div>
+      )}
+      {content && (
+        <div className="flex items-center justify-center mt-10">
+          <WelcomeMsg></WelcomeMsg>
+        </div>
+      )}
 
       <div>
         <TopTracks tunes={songs}></TopTracks>
