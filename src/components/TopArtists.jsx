@@ -1,7 +1,7 @@
 export const TopArtists = ({ creators }) => {
   return (
     <>
-      <p className="text-center text-3xl">Your top 10 artists:</p>
+      <p className="text-center text-3xl">Your top 5 artists:</p>
       <div className="grid grid-cols-1 grid-rows-5  w-125 mx-auto">
         {creators?.items.slice(0, 5).map((artist, index) => (
           <>

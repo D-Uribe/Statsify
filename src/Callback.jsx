@@ -113,6 +113,7 @@ const Callback = () => {
           setSongs(tracks);
           setArtists(artistData);
           setSpinner(false);
+          localStorage.removeItem("access_token")
         }
       };
       getData();
