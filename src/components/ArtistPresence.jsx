@@ -68,7 +68,7 @@ export const ArtistPresence = ({ artistFrequency }) => {
   return (
     <div className="flex justify-center">
     <div className="flex items-center flex-col max-w-md">
-      <p className="text-2xl text-justify">Artists appearing most frequently in your Top 10 tracks:</p>
+      <p className="text-center text-black text-2xl font-bold mb-5 mt-4">Artists appearing most frequently in your Top 10 tracks:</p>
 
       <Doughnut data={data} options={options}/>
     </div>
