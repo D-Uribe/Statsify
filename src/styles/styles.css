@@ -5,6 +5,7 @@
 @theme {
   --font-pacifico: "Pacifico", cursive;
   --font-poppins: "Poppins", sans-serif;
+  --breakpoint-xs: 480px;
 }
 
 
@@ -31,7 +32,7 @@ p, li{
 }
 
 .description{
-  font-size: 2rem;
+
   max-width: 700px;
   text-align: justify;
 }

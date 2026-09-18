@@ -7,7 +7,7 @@ const Socials = ({ src, alt, href }) => (
     <img
       src={src}
       alt={alt}
-      className="bg-white rounded-lg w-8 h-8"
+      className="w-5 h-5 xs:w-8 xs:h-8 bg-white rounded-lg "
     />
     </a>
 );

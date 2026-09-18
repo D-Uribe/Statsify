@@ -31,14 +31,14 @@ const item = {
 export const Welcome = () => {
   return (
     <>
-      <div className="relative min-h-screen bg-black">
-        <video className="w-full absolute" autoPlay loop muted preload="auto">
+      <div className="relative min-h-screen bg-black md:500px">
+        <video className="w-full h-full absolute object-cover" autoPlay loop muted preload="auto">
           <source src={background} type="video/mp4" />
         </video>
         <div className="relative z-10">
           <div className="top-container flex justify-center items-center flex-col min-h-screen pb-40">
-            <h1 className="text-[12rem] mt-3">Statsify</h1>
-            <p className="mt-20 text-5xl">
+            <h1 className="text-8xl xs:text-9xl mt-3 md:text-[12rem]">Statsify</h1>
+            <p className="text-4xl xs:text-5xl mt-20 text-center md:text-6xl">
               See what you've been listening to,{" "}
               <span className="font-bold">right now</span>.
             </p>
@@ -47,14 +47,14 @@ export const Welcome = () => {
       </div>
 
       <div className="flex justify-center items-center mt-32">
-        <p className="text-5xl mt-6">Don't wait for December.</p>
+        <p className="text-2xl text-center xs:text-5xl mt-6">Don't wait for December.</p>
       </div>
-      <div className="flex justify-center mt-24">
-        <p className="description text-2xl">
+      <div className="flex justify-center mt-24 p-4">
+        <p className="text-2xl text-center xs:text-4xl description">
           Explore your top artists, tracks, and listening habits anytime you
           want. No need to wait for Spotify Wrapped.
           <br />
-          With Statsify you can observe your:
+          With Statsify you can observe your{" "}:
         </p>
       </div>
 
@@ -69,8 +69,8 @@ export const Welcome = () => {
           className="flex flex-col items-center text-center gap-3"
         >
           <Icon src={musicPlayer} alt="music player icon" />
-          <p className="feature text-3xl">Top Tracks</p>
-          <p>Explore your most played songs.</p>
+          <p className="text-2xl xs:text-3xl feature">Top Tracks</p>
+          <p className="">Explore your most played songs.</p>
         </motion.div>
 
         <motion.div
@@ -78,7 +78,7 @@ export const Welcome = () => {
           className="flex flex-col items-center text-center gap-3"
         >
           <Icon src={headphones} alt="headphones icon" />
-          <p className="feature text-3xl">Listening Insights</p>
+          <p className="text-2xl xs:text-3xl feature">Listening Insights</p>
           <p>Visualize your music statistics.</p>
         </motion.div>
 
@@ -87,8 +87,8 @@ export const Welcome = () => {
           className="flex flex-col items-center text-center gap-3"
         >
           <Icon src={graph} alt="graph icon" />
-          <p className="feature text-3xl">Top Artists</p>
-          <p className="">Meet your favorite creators.</p>
+          <p className="text-2xl xs:text-3xl feature">Top Artists</p>
+          <p>Meet your favorite creators.</p>
         </motion.div>
       </motion.div>
 
@@ -106,29 +106,3 @@ export const Welcome = () => {
     </>
   );
 };
-
-/*      <div className="grid grid-cols-3 gap-4 mt-30">
-        <div className="flex flex-col items-center text-center gap-3">
-          <Icon src={musicPlayer} alt="music player icon" />
-          <p className="feature text-3xl">Your Top Tracks</p>
-          <p>Explore your most played songs.</p>
-        </div>
-
-        <div className="flex flex-col items-center text-center gap-3">
-          <Icon src={headphones} alt="headphones icon" />
-          <p className="feature text-3xl">Listening Insights</p>
-          <p>Visualize your music statistics.</p>
-        </div>
-
-        <div className="flex flex-col items-center text-center gap-3">
-          <Icon src={graph} alt="graph icon" />
-          <p className="feature text-3xl">Top Artists</p>
-          <p className="">Meet your favorite creators.</p>
-        </div>
-      </div> */
-
-/* <div className="vinyl">
-          <div className="vinyl-center">
-            <img src={spotifyLogo} alt="Spotify Logo" />
-          </div>
-        </div> */

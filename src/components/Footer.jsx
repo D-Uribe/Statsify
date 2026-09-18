@@ -2,23 +2,31 @@ import statsifylogo from "../assets/bar-chart.png";
 import github from "../assets/github.png";
 import linkedin from "../assets/linkedin.png";
 import Socials from "./Socials";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 export const Footer = () => {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <>
-      <footer className="footer  bg-green-100 flex justify-around items-center mt-15 p-10">
+      <footer className=" bg-green-100 flex justify-around items-center mt-15 p-10">
         <div className="flex items-center gap-2">
-          <img src={statsifylogo} alt="Statsify Logo" />
-          <p className="text-2xl">Statsify</p>
+          <img className="w-5 h-5 xs:w-10 xs:h-10" src={statsifylogo} alt="Statsify Logo" />
+          <p className="text-xl xs:text-2xl">Statsify</p>
         </div>
 
         <div>
           <ul>
-            <button onClick={() => {window.scrollTo(0, 0); navigate("/")}} type="button" className="font-poppins">Home</button>
+            <button
+              onClick={() => {
+                window.scrollTo(0, 0);
+                navigate("/");
+              }}
+              type="button"
+              className="font-poppins"
+            >
+              Home
+            </button>
             <li>Privacy Policy</li>
           </ul>
         </div>
