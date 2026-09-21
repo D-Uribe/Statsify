@@ -34,9 +34,7 @@ const getToken = async (code) => {
     console.error("No token found", data);
     return null;
   }
-  console.log("TOKEN RESPONSE:", data);
   localStorage.setItem("access_token", data.access_token);
-  //console.log("TOKEN RESPONSE:", data);
 
   return data.access_token;
 };
@@ -49,7 +47,6 @@ const getProfile = async (accessToken) => {
   });
 
   const data = await response.json();
-  //console.log("ACCESS TOKEN:", accessToken);
   return data;
 };
 
@@ -61,7 +58,6 @@ const getTracks = async (accessToken) => {
   });
 
   const data = await response.json();
-  //console.log("ACCESS TOKEN:", accessToken);
   return data;
 };
 
@@ -73,7 +69,7 @@ const getArtists = async (accessToken) => {
   });
 
   const data = await response.json();
-  //console.log("ACCESS TOKEN:", accessToken);
+
   return data;
 };
 
@@ -122,11 +118,11 @@ const Callback = () => {
 
   return (
     <>
-      <div className="flex justify-between p-10 bg-black">
-        <h1 className="text-6xl text-white">Statsify</h1>
+      <div className=" flex w-full xs:flex justify-between p-10 bg-black ">
+        <h1 className=" text-4xl xs:text-6xl text-white">Statsify</h1>
         <div className="flex items-center gap-2">
           <img
-            className="rounded-full w-15 h-15"
+            className="rounded-full w-10 h-10 xs:rounded-full xs:w-15 xs:h-15"
             src={content?.images[0].url}
           />
           <p className="text-white">{content?.display_name}</p>

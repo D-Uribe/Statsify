@@ -2,7 +2,7 @@ export const TopArtists = ({ creators }) => {
   return (
     <>
       <p className="text-center text-black text-2xl font-bold mb-5 mt-4">Your top 5 artists:</p>
-      <div className="grid grid-cols-1 grid-rows-5  w-125 mx-auto gap-4">
+      <div className="grid grid-cols-1 gap-4 w-[85%] mx-auto md:w-125">
         {creators?.items.slice(0, 5).map((artist, index) => (
           <>
             <div className="flex items-center gap-4 p-3 bg-zinc-900 rounded-xl border border-zinc-800"

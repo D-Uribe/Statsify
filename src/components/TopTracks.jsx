@@ -4,7 +4,7 @@ export const TopTracks = ({ tunes }) => {
       <p className="text-center text-black text-2xl font-bold mb-5">
         Your top 10 songs:
       </p>
-      <div className="grid grid-cols-1 grid-rows-10  w-125 mx-auto gap-4">
+      <div className="grid grid-cols-1 gap-4 w-[85%] mx-auto md:w-125">
         {tunes?.items.slice(0, 10).map((song, index) => (
           <>
             <div

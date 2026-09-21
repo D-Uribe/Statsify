@@ -22,6 +22,6 @@ export const WelcomeMsg = () => {
 const ref = useRef(Math.floor(Math.random()* phrases.length))
 
   return (
-    <p className="welcome-msg">{phrases[ref.current]}</p>
+    <p className="text-2xl xs: text-center">{phrases[ref.current]}</p>
   )
 }
