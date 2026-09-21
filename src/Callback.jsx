@@ -9,8 +9,19 @@ import { ClipLoader } from "react-spinners";
 const getToken = async (code) => {
   const codeVerifier = localStorage.getItem("code_verifier");
 
-  const clientId = "b4d80e95de2b46fda1930bd70b1c484e";
-  const redirectUri = "http://127.0.0.1:5173/callback";
+  const clientId = import.meta.env.VITE_CLIENT_ID;
+  const redirectUri = import.meta.env.VITE_REDIRECT_URI;
+
+    console.log("redirectUri:", redirectUri)  // 👈 aquí
+    console.log("clientId:", clientId)
+
+    console.log("body:", {
+    client_id: clientId,
+    grant_type: 'authorization_code',
+    code: code,
+    redirect_uri: redirectUri,
+    code_verifier: codeVerifier,
+})
 
   const body = new URLSearchParams({
     client_id: clientId,
@@ -19,6 +30,7 @@ const getToken = async (code) => {
     redirect_uri: redirectUri,
     code_verifier: codeVerifier,
   });
+
 
   const response = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
@@ -109,7 +121,6 @@ const Callback = () => {
           setSongs(tracks);
           setArtists(artistData);
           setSpinner(false);
-          localStorage.removeItem("access_token")
         }
       };
       getData();

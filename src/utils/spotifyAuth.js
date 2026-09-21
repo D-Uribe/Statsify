@@ -24,8 +24,8 @@ const generateCodeChallenge = async (codeVerifier) => {
 };
 
 export const loginWithSpotify = async () => {
-    const clientId = "b4d80e95de2b46fda1930bd70b1c484e";
-    const redirectUri = "http://127.0.0.1:5173/callback";
+    const clientId = import.meta.env.VITE_CLIENT_ID
+    const redirectUri = import.meta.env.VITE_REDIRECT_URI
 
     const codeVerifier = generateCodeVerifier(64);
     const codeChallenge = await generateCodeChallenge(codeVerifier);
