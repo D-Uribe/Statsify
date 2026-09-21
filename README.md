@@ -1,16 +1,60 @@
-# React + Vite
+<img width="1869" height="831" alt="image" src="https://github.com/user-attachments/assets/9a44456e-3735-4714-b380-a129b7a83772" /># Statsify 🎵
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Your personal Spotify stats, anytime. Don't wait for December.
 
-Currently, two official plugins are available:
+Statsify connects to your Spotify account and gives you real-time insights into your listening habits — your top artists, most played tracks, and music trends, whenever you want them.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Live Demo
 
-## React Compiler
+🔗 [statsify.netlify.app](https://eclectic-fudge-42f267.netlify.app)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- 🔐 Secure authentication via **OAuth 2.0 with PKCE** (Spotify)
+- 🎵 Your **Top 10 tracks** with album art and artist info
+- 🎤 Your **Top 5 artists** with profile images
+- 🍩 **Artist Presence chart** — visualizes which artists dominate your top 10 tracks
+- 📱 Fully responsive design
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Technologies
+
+- React
+- Tailwind CSS v4
+- Spotify Web API
+- OAuth 2.0 (PKCE flow)
+- Chart.js / react-chartjs-2
+- Framer Motion
+- Netlify
+
+## How it works
+
+1. Click **Login with Spotify**
+2. Authorize Statsify to access your listening data
+3. Spotify redirects you back with your stats
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies
+```bash
+npm install
+```
+3. Create a `.env` file in the root:
+```
+VITE_CLIENT_ID=your_spotify_client_id
+VITE_REDIRECT_URI=http://127.0.0.1:5173/callback
+```
+4. Register your app at [Spotify Developer Dashboard](https://developer.spotify.com/dashboard) and add `http://127.0.0.1:5173/callback` as a Redirect URI
+5. Run the app
+```bash
+npm run dev
+```
+
+## Preview
+
+<img width="1869" height="831" alt="image" src="https://github.com/user-attachments/assets/f774d3e5-4062-4414-917a-0e1faa241438" />
+
+
+## Made by
+
+Diego Uribe — [GitHub](https://github.com/D-Uribe)
