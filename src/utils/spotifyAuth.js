@@ -39,6 +39,7 @@ export const loginWithSpotify = async () => {
         scope: "user-read-private user-read-email user-top-read",
         code_challenge_method: "S256",
         code_challenge: codeChallenge,
+        show_dialog: true
     });
 
     window.location.href =

@@ -12,17 +12,6 @@ const getToken = async (code) => {
   const clientId = import.meta.env.VITE_CLIENT_ID;
   const redirectUri = import.meta.env.VITE_REDIRECT_URI;
 
-    console.log("redirectUri:", redirectUri)  // 👈 aquí
-    console.log("clientId:", clientId)
-
-    console.log("body:", {
-    client_id: clientId,
-    grant_type: 'authorization_code',
-    code: code,
-    redirect_uri: redirectUri,
-    code_verifier: codeVerifier,
-})
-
   const body = new URLSearchParams({
     client_id: clientId,
     grant_type: "authorization_code",
@@ -30,6 +19,7 @@ const getToken = async (code) => {
     redirect_uri: redirectUri,
     code_verifier: codeVerifier,
   });
+
 
 
   const response = await fetch("https://accounts.spotify.com/api/token", {
@@ -47,7 +37,6 @@ const getToken = async (code) => {
     return null;
   }
   localStorage.setItem("access_token", data.access_token);
-
   return data.access_token;
 };
 
@@ -81,7 +70,6 @@ const getArtists = async (accessToken) => {
   });
 
   const data = await response.json();
-
   return data;
 };
 
@@ -93,6 +81,13 @@ const Callback = () => {
   const [songs, setSongs] = useState();
   const [artists, setArtists] = useState();
   const [spinner, setSpinner] = useState(false);
+
+    const handleLogout = () =>{
+    localStorage.removeItem("access_token")
+    localStorage.removeItem("code_verifier")
+    window.location.href="/"
+  }
+
 
   const artistNames = songs?.items
     .slice(0, 10)
@@ -162,6 +157,10 @@ const Callback = () => {
       </div>
       <div>
         <ArtistPresence artistFrequency={artistFrequency}></ArtistPresence>
+      </div>
+      <div className="flex justify-center items-center mt-5">
+        <button onClick={handleLogout} className="flex justify-center items-center gap-5 spotify-logo bg-gray-950 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
+        >Log out</button>
       </div>
       <Footer></Footer>
     </>
