@@ -107,25 +107,29 @@ const Callback = () => {
   const artistFrequency = artistNames?.reduce(countArtists, {});
 
   useEffect(() => {
-    if (code) {
-      setSpinner(true);
-      const existingToken = localStorage.getItem("access_token");
-
-      const getData = async () => {
-        const accessToken = existingToken || (await getToken(code));
-        if (accessToken) {
-          const profile = await getProfile(accessToken);
-          const tracks = await getTracks(accessToken);
-          const artistData = await getArtists(accessToken);
-          setContent(profile);
-          setSongs(tracks);
-          setArtists(artistData);
-          setSpinner(false);
-        }
-      };
-      getData();
+    if (!code) {
+        localStorage.removeItem("access_token")
+        window.location.href = "/"
+        return
     }
-  }, [code]);
+        setSpinner(true);
+        localStorage.removeItem("access_token")
+        
+        const getData = async () => {
+            const accessToken = await getToken(code)
+            if (accessToken) {
+                const profile = await getProfile(accessToken)
+                const tracks = await getTracks(accessToken)
+                const artistData = await getArtists(accessToken)
+                setContent(profile)
+                setSongs(tracks)
+                setArtists(artistData)
+                setSpinner(false)
+            }
+        }
+        getData()
+    
+}, [code])
 
   return (
     <>
