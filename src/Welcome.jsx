@@ -32,7 +32,7 @@ export const Welcome = () => {
   return (
     <>
       <div className="relative min-h-screen bg-black md:500px">
-        <video className="w-full h-full absolute object-cover" autoPlay loop muted preload="auto">
+        <video className="w-full h-full absolute object-cover" autoPlay loop muted playsInline preload="auto">
           <source src={background} type="video/mp4" />
         </video>
         <div className="relative z-10">
