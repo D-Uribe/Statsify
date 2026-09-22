@@ -52,7 +52,8 @@ npm run dev
 
 ## Preview
 
-<img width="1869" height="831" alt="image" src="https://github.com/user-attachments/assets/f774d3e5-4062-4414-917a-0e1faa241438" />
+<img width="1860" height="773" alt="image" src="https://github.com/user-attachments/assets/80ea0584-8c49-4899-b116-97d78e7edc32" />
+
 
 
 ## Made by
