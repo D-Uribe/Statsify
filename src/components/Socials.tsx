@@ -1,4 +1,11 @@
-const Socials = ({ src, alt, href }) => (
+type SocialsProps = {
+  src: string,
+  alt: string,
+  href: string
+}
+
+
+const Socials = ({ src, alt, href } : SocialsProps) => (
   <a
       target="_blank"
       rel="noreferrer"

@@ -1,13 +1,19 @@
 import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
+import type { ChartOptions } from "chart.js";
+
+type ArtistPresenceProps = {
+  artistFrequency: Record<string, number> | null;
+};
 
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
-//TODO: CAMBIAR COLORES HAY UNO PARECIDO AL NARANJA
-export const ArtistPresence = ({ artistFrequency }) => {
-  
+
+export const ArtistPresence = ({ artistFrequency }: ArtistPresenceProps) => {
   const keys = artistFrequency ? Object.keys(artistFrequency) : [];
   const values = artistFrequency ? Object.values(artistFrequency) : [];
+
+  const total = values.reduce((a, b) => a + b, 0);
 
   const data = {
     labels: keys,
@@ -33,7 +39,7 @@ export const ArtistPresence = ({ artistFrequency }) => {
     ],
   };
 
-  const options = {
+  const options: ChartOptions<"doughnut"> = {
     cutout: "70%",
     plugins: {
       legend: {
@@ -52,8 +58,7 @@ export const ArtistPresence = ({ artistFrequency }) => {
       },
       datalabels: {
         color: "white",
-        formatter: (value, context) => {
-          const total = context.dataset.data.reduce((a, b) => a + b, 0);
+        formatter: (value: number) => {
           const percentage = Math.round((value / total) * 100);
           return `${percentage}%`;
         },
@@ -67,11 +72,13 @@ export const ArtistPresence = ({ artistFrequency }) => {
 
   return (
     <div className="flex justify-center">
-    <div className="flex items-center flex-col max-w-md">
-      <p className="text-xs text-center text-black xs:text-2xl font-bold mb-5 mt-4">Artists appearing most frequently in your Top 10 tracks:</p>
+      <div className="flex items-center flex-col max-w-md">
+        <p className="text-xs text-center text-black xs:text-2xl font-bold mb-5 mt-4">
+          Artists appearing most frequently in your Top 10 tracks:
+        </p>
 
-      <Doughnut data={data} options={options}/>
-    </div>
+        <Doughnut data={data} options={options} />
+      </div>
     </div>
   );
 };
