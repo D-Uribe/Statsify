@@ -1,4 +1,22 @@
-export const TopTracks = ({ tunes }) => {
+
+
+type Image = {
+  url: string,
+}
+
+type Song = {
+  id: string,
+  name: string,
+  artists: {name: string}[]
+  album: {images: Image[]}
+}
+
+type TopTracksProps = {
+  tunes: {items: Song[]} | null
+}
+
+
+export const TopTracks = ({ tunes }: TopTracksProps) => {
   return (
     <>
       <p className="text-center text-black text-2xl font-bold mb-5">

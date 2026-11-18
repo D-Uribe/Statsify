@@ -1,4 +1,19 @@
-export const TopArtists = ({ creators }) => {
+type Image = {
+  url: string
+}
+
+type Artist = {
+  id: string,
+  name: string,
+  images: Image[]
+
+}
+
+type TopArtistsProps = {
+ creators: {items: Artist[]} | null
+}
+
+export const TopArtists = ({ creators }: TopArtistsProps) => {
   return (
     <>
       <p className="text-center text-black text-2xl font-bold mb-5 mt-4">Your top 5 artists:</p>
