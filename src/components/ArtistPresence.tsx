@@ -4,7 +4,7 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 import type { ChartOptions } from "chart.js";
 
 type ArtistPresenceProps = {
-  artistFrequency: Record<string, number> | null;
+  artistFrequency: Record<string, number> | null | undefined;
 };
 
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);

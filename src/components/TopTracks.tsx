@@ -1,15 +1,7 @@
+import type { Song } from "../types"
 
 
-type Image = {
-  url: string,
-}
 
-type Song = {
-  id: string,
-  name: string,
-  artists: {name: string}[]
-  album: {images: Image[]}
-}
 
 type TopTracksProps = {
   tunes: {items: Song[]} | null

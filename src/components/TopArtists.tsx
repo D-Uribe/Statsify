@@ -1,13 +1,5 @@
-type Image = {
-  url: string
-}
+import type { Artist } from "../types"
 
-type Artist = {
-  id: string,
-  name: string,
-  images: Image[]
-
-}
 
 type TopArtistsProps = {
  creators: {items: Artist[]} | null
