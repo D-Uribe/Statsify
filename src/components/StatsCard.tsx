@@ -1,6 +1,29 @@
 import { ArtistPresence } from "./ArtistPresence";
 
-export const StatsCard = ({ info, tunes, creators, artistFrequency }) => {
+type Image = {
+  url: string;
+}
+
+type Artist = {
+  name: string,
+  images: Image[];
+}
+
+type Song = {
+  name: string,
+  artists: { name: string}[],
+  album: { images: Image[]};
+}
+
+type StatsCardProps = {
+  info: { display_name : string} | null,
+  tunes: {items: Song[]} | null,
+  creators: { items: Artist[]} | null,
+  artistFrequency: Record<string, number>
+}
+
+
+export const StatsCard = ({ info, tunes, creators, artistFrequency }: StatsCardProps) => {
   return (
     <>
       <div className="bg-black text-center p-5">

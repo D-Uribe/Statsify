@@ -5,9 +5,25 @@ import { TopArtists } from "./components/TopArtists";
 import { ArtistPresence } from "./components/ArtistPresence";
 import { Footer } from "./components/Footer";
 import { ClipLoader } from "react-spinners";
+import type { Image, Song, Artist } from "./types"
 
-const getToken = async (code) => {
-  const codeVerifier = localStorage.getItem("code_verifier");
+
+
+
+type Profile = {
+  display_name: string,
+  images: Image[]
+}
+
+
+
+
+const getToken = async (code: string) => {
+   const codeVerifier = localStorage.getItem("code_verifier");
+  if(!codeVerifier){
+      console.error("No token found");
+      return null;
+  }
 
   const clientId = import.meta.env.VITE_CLIENT_ID;
   const redirectUri = import.meta.env.VITE_REDIRECT_URI;
@@ -40,7 +56,7 @@ const getToken = async (code) => {
   return data.access_token;
 };
 
-const getProfile = async (accessToken) => {
+const getProfile = async (accessToken: string) => {
   const response = await fetch("https://api.spotify.com/v1/me", {
     headers: {
       Authorization: `Bearer ${accessToken}`,
@@ -51,7 +67,7 @@ const getProfile = async (accessToken) => {
   return data;
 };
 
-const getTracks = async (accessToken) => {
+const getTracks = async (accessToken: string) => {
   const response = await fetch("https://api.spotify.com/v1/me/top/tracks", {
     headers: {
       Authorization: `Bearer ${accessToken}`,
@@ -62,7 +78,7 @@ const getTracks = async (accessToken) => {
   return data;
 };
 
-const getArtists = async (accessToken) => {
+const getArtists = async (accessToken: string) => {
   const response = await fetch("https://api.spotify.com/v1/me/top/artists", {
     headers: {
       Authorization: `Bearer ${accessToken}`,
@@ -77,9 +93,9 @@ const Callback = () => {
   const params = new URLSearchParams(window.location.search);
   const code = params.get("code");
 
-  const [content, setContent] = useState();
-  const [songs, setSongs] = useState();
-  const [artists, setArtists] = useState();
+  const [content, setContent] = useState<Profile | null>(null);
+  const [songs, setSongs] = useState< {items: Song[]} |null>(null);
+  const [artists, setArtists] = useState< {items: Artist[]} | null>(null);
   const [spinner, setSpinner] = useState(false);
 
     const handleLogout = () =>{
@@ -93,7 +109,7 @@ const Callback = () => {
     .slice(0, 10)
     .map((song) => song.artists[0].name);
 
-  function countArtists(acc, val) {
+  function countArtists(acc: Record<string,number>, val: string) {
     acc[val] ??= 0;
     acc[val] += 1;
     return acc;

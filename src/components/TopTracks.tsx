@@ -1,4 +1,14 @@
-export const TopTracks = ({ tunes }) => {
+import type { Song } from "../types"
+
+
+
+
+type TopTracksProps = {
+  tunes: {items: Song[]} | null
+}
+
+
+export const TopTracks = ({ tunes }: TopTracksProps) => {
   return (
     <>
       <p className="text-center text-black text-2xl font-bold mb-5">

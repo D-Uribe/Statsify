@@ -1,4 +1,11 @@
-export const TopArtists = ({ creators }) => {
+import type { Artist } from "../types"
+
+
+type TopArtistsProps = {
+ creators: {items: Artist[]} | null
+}
+
+export const TopArtists = ({ creators }: TopArtistsProps) => {
   return (
     <>
       <p className="text-center text-black text-2xl font-bold mb-5 mt-4">Your top 5 artists:</p>
