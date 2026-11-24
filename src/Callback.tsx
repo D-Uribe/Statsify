@@ -12,6 +12,10 @@ type Profile = {
   images: Image[];
 };
 
+type Data = {
+  access_token: string | null
+}
+
 const getToken = async (code: string) => {
   const codeVerifier = localStorage.getItem("code_verifier");
   if (!codeVerifier) {
@@ -38,7 +42,7 @@ const getToken = async (code: string) => {
     body: body,
   });
 
-  const data = await response.json();
+  const data: Data = await response.json();
 
   if (!data.access_token) {
     console.error("No token found", data);
