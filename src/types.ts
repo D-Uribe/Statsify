@@ -9,9 +9,14 @@ export type Artist = {
 
 }
 
+export type List<T> = {
+    items: T[]
+}
+
 export type Song = {
   id: string,
   name: string,
   artists: {name: string}[]
   album: {images: Image[]}
 }
+
