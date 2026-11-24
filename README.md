@@ -1,5 +1,7 @@
 <img width="1869" height="831" alt="image" src="https://github.com/user-attachments/assets/9a44456e-3735-4714-b380-a129b7a83772" /># Statsify 🎵
 
+![CI](https://github.com/D-Uribe/Statsify/actions/workflows/ci.yml/badge.svg)
+
 Your personal Spotify stats, anytime. Don't wait for December.
 
 Statsify connects to your Spotify account and gives you real-time insights into your listening habits — your top artists, most played tracks, and music trends, whenever you want them.
