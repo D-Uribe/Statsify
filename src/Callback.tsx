@@ -160,6 +160,9 @@ const Callback = () => {
           Log out
         </button>
       </div>
+      <div>
+        
+      </div>
       <Footer></Footer>
     </>
   );
