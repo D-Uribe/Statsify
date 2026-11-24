@@ -1,6 +1,6 @@
 <img width="1869" height="831" alt="image" src="https://github.com/user-attachments/assets/9a44456e-3735-4714-b380-a129b7a83772" />
 
-![CI](https://github.com/D-Uribe/Statsify/actions/workflows/ci.yml/badge.svg)
+[![CI](https://github.com/D-Uribe/Statsify/actions/workflows/ci.yml/badge.svg)](https://github.com/D-Uribe/Statsify/actions)
 
 Statsify
 
